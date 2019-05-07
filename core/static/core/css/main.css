@@ -1,0 +1,67 @@
+i {
+	font-size: 25px;
+	color: #283e4a;
+}
+.icon-night {
+	color: #ffffff;
+}
+i:hover {
+	color: #5c6f7c;
+}
+
+#small {
+	font-size: 17px;
+}
+#medium {
+	font-size: 21px;
+}
+#large {
+	font-size: 25px;
+}
+
+/*rename section*/
+/* fix hover for sections. Some part of the jQuery is de-activating the hover effect. */
+.section {
+	text-align: center;
+	font-weight: bold;
+	margin-bottom: 6px;
+	cursor: pointer;
+}
+.section:hover {
+	background-color: #eae8e8;
+}
+
+#text-box {
+	padding: 0 10px;
+	max-height: 40px;
+	overflow: hidden;
+	scroll-behavior: smooth;
+}
+#text {
+	margin-top: 17px;
+}
+
+#random {
+	color: black;
+}
+#random:hover {
+	text-decoration: none;
+}
+
+#guide, #tips {
+	display: none;
+}
+
+.display-none {
+	display: none !important;
+}
+
+.settings-section, .profile-section {
+	flex:1;
+}
+
+@media only screen and (min-width: 415px) {
+	#settings-box, #profile-box {
+		display: flex;
+	}
+}

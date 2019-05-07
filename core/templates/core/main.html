@@ -1,0 +1,125 @@
+{% extends 'core/base.html' %}
+
+{% block static %}
+	{% load static %}
+
+	<link rel="stylesheet" type="text/css" href="{% static 'core/css/main.css' %}">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="{% static 'core/js/main.js' %}"></script>
+{% endblock %}
+
+{% block header %}
+	<h4>Read For Speed</h4>
+	<em>- for improving your reading speed!</em>
+{% endblock %}
+
+{% block content %}
+	<div class="row">
+		<div id="refresh-button" class="col-6 section box" onclick="window.location='/'">Random</div>
+		<div id="repeat-button" class="col-6 section box">Repeat</div>
+	</div>
+	<br>
+	<div class="row box">
+		<div id="text-box" class="col-12" style="position: relative;">
+			<p id="text">{{ text.text }}</p>
+		</div>
+	</div>
+	<small>Click anywhere on text above to start/pause.</small>
+	<br>
+	<span>
+		<b>Speed:
+		<span id="current-speed"></span></b>&nbsp;
+		<i id="increment-count" class="fas fa-arrow-alt-circle-up speed-button"></i>
+		<i id="decrement-count" class="fas fa-arrow-alt-circle-down speed-button"></i>
+	</span>
+	<br>
+	<br>
+	<!-- SETTINGS/PROFILE: -->
+	<div class="row">
+		<div id="settings-button" class="col-6 section box">Settings</div>
+		<div id="profile-button" class="col-6 section box">
+			Profile
+		</div>
+	</div>
+	<!-- ********** -->
+
+	<div class="row">
+		<!-- SETTINGS-BOX: -->
+		<div id="placeholder-box" class="col-6">
+		</div>
+
+		<div id="settings-box" class="col-6 box text-center display-none">
+			<div class="settings-section">
+				<small><b>Theme:</b></small>
+				<br>
+				<i id="day-button" class="fas fa-sun theme-button button" title="day"></i>&nbsp;
+				<i id="night-button" class="fas fa-moon theme-button button" title="night"></i>
+			</div>
+			<div class="settings-section">
+				<small><b>Font size:</b></small>
+				<br>
+				<i id="small" class="fas fa-font font-size-button button" title="small"></i>
+				<i id="medium" class="fas fa-font font-size-button button" title="medium"></i>
+				<i id="large" class="fas fa-font font-size-button button" title="large"></i>
+			</div>
+		</div>
+		<!-- ********** -->
+
+		<!-- PROFILE-BOX: -->
+		<div id="profile-box" class="col-6 box text-center display-none">
+			{% if user.is_authenticated %}
+				<div class="profile-section">
+					<small><b>My Texts:</b></small>
+					<br>
+					<a href="{% url 'my_texts' %}"><i class="fas fa-file-alt button"></i></a>
+				</div>
+
+				<div class="profile-section">
+					<small><b>Add Text:</b></small>
+					<br>
+					<a href="{% url 'add_text' %}"><i class="fas fa-plus-circle button"></i></a>
+				</div>
+			{% else %}
+				<div id="twitter-login" class="profile-section">
+					<small><b>Twitter</b></small>
+					<br>
+					<a href="{% url 'social:begin' 'twitter' %}"><i class="fab fa-twitter button"></i></a>
+				</div>
+				<div id="facebook-login" class="profile-section">
+					<small><b>Facebook</b></small>
+					<br>
+					<a href="{% url 'social:begin' 'facebook' %}"><i class="fab fa-facebook-f button"></i></a>
+				</div>
+			{% endif %}
+		</div>
+		<!-- ********** -->
+	</div>
+	<small id="guide-link"><a href="#guide">How does it work?</a></small>
+	 | 
+	<small id="tips-link"><a href="#tips">Tips</a></small>
+	
+	<div id="guide" class="row box">
+		<div class="col-12">
+			<b>Guide:</b>
+			<ul>
+				<li>Click on text to start or pause.</li>
+				<li>When finished reading the text, you can click on repeat to read it again, or on refresh to get a new one.</li>
+				<li>Click on the <em>settings</em> button to set speed, font size, and theme.</li>
+				<li>Click on the <em>profile</em> button to go to the profile section where you can add your own texts and save your settings.</li>
+			</ul>
+		</div>
+	</div>
+	<br>
+	<div id="tips" class="row box">
+		<div class="col-12">
+			<b>Tips:</b>
+			<ul>
+				<li>Choose a speed that you're comfortable with. Read the text, and then increase the speed and read it again. Keep doing this until you reach a speed that is too challenging and keep practicing the same text at this speed.</li>
+				<li>When reading a new text, start again at a speed you're comfortable with, and increase gradually every time.</li>
+				<li>Don't try and read out loud the words in your mind. Just scan through the words with your eyes.</li>
+				<li>With a profile you can upload your own texts and save your settings across sessions.</li>
+			</ul>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Add Text{% endblock %}
+
+{% block header %}
+	<h4>Add a text to your account</h4>
+	<a href="{% url 'main' %}">Main</a> | <a href="{% url 'my_texts' %}">My Texts</a>
+{% endblock %}
+
+{% block content %}
+	<div class="row box">
+		<div class="col-12">
+			<p>Enter your text in the form below and give it a meaningful title.</p>
+			<form method="post">
+				{% csrf_token %}
+				<table class="table">
+					{{ form }}
+				</table>
+				<button type="submit" class="btn btn-outline-dark">Save</button>
+			</form>
+		</div>	
+	</div>
+{% endblock %}

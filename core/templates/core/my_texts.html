@@ -1,0 +1,54 @@
+{% extends 'core/base.html' %}
+
+{% block title %}My Texts{% endblock %}
+
+{% block header %}
+	<h4>My Texts</h4>
+	<a href="{% url 'main' %}">Main</a> | <a href="{% url 'add_text' %}">Add Text</a>
+{% endblock %}
+
+{% block content %}
+
+	{% if messages %}
+		{% for message in messages %}
+			<div class="alert alert-warning alert-dismissable" role="alert">
+				{{ message }}
+			</div>
+		{% endfor %}
+	{% endif %}
+
+	<div class="row box">
+		<div class="col-12">
+			{% if texts %}
+				<p>Click on a text below to use it.</p>
+				<table class="table">
+					<tr>
+						<th>Title</th>
+						<th>Text</th>
+						<th><center>Edit</center></th>
+						<th><center>Delete</center></th>
+					</tr>
+					{% for text in texts %}
+					<tr>
+						<td><a href="{% url 'main' text.id %}">{{ text.title }}</a></td>
+						{% if text.text|length > 50 %}
+							<td>{{ text.text|slice:":50" }}...</td>
+						{% else %}
+							<td>{{ text.text }}</td>
+						{% endif %}
+
+						<td><center><a href="{% url 'edit_text' text.id %}"><i class="fas fa-pencil-alt"></i></a></center></td>
+						<td><center><a href="{% url 'delete_text' text.id %}"><i class="fas fa-trash-alt"></i></a></center></td>
+					</tr>
+					{% endfor %}
+				</table>
+			{% else %}
+				<p>You still haven't added any texts. Click on the link below to add some.</p>
+			{% endif %}
+			<br>
+			<br>
+
+			<a href="{% url 'add_text' %}" class="btn btn-outline-dark">Add text</a>
+		</div>	
+	</div>
+{% endblock %}
