@@ -22,7 +22,7 @@ $(document).ready(function(){
 			textBox.stop();
 		}
 	});
-	// MAKE SCROL SMOOTHER.
+
 	$(".speed-button").on("click", function(){
 		if($(this).attr("id") == 'increment-count'){
 			if (speedCount < 10){
