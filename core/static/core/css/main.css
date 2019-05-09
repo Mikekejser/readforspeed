@@ -19,8 +19,6 @@ i:hover {
 	font-size: 25px;
 }
 
-/*rename section*/
-/* fix hover for sections. Some part of the jQuery is de-activating the hover effect. */
 .section {
 	text-align: center;
 	font-weight: bold;
@@ -35,7 +33,6 @@ i:hover {
 	padding: 0 10px;
 	max-height: 40px;
 	overflow: hidden;
-	scroll-behavior: smooth;
 }
 #text {
 	margin-top: 17px;
