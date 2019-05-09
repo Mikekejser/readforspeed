@@ -33,6 +33,7 @@ i:hover {
 	padding: 0 10px;
 	max-height: 40px;
 	overflow: hidden;
+	scroll-behavior: smooth;
 }
 #text {
 	margin-top: 17px;
